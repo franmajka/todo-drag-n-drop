@@ -1,0 +1,19 @@
+version: "3"
+
+volumes:
+  todo-drag-n-drop: {}
+
+services:
+  todo-drag-n-drop:
+    image: postgres:latest
+    hostname: todo-drag-n-drop
+    command: ["postgres", "-c", "log_statement=all"]
+    environment:
+      POSTGRES_DB: "todo-drag-n-drop"
+      POSTGRES_USER: "root"
+      POSTGRES_PASSWORD: "root"
+      PGDATA: ./data/postgres
+    volumes:
+      - todo-drag-n-drop:/data/postgres
+    ports:
+      - "5432:5432"
